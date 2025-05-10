@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-file_name = '..\\fake_news.csv'
+file_name = 'fake_news.csv'
 
 #проверка верности меток
 def validate_count(df):
@@ -12,6 +12,11 @@ def validate_count(df):
     real_count = len(df[df['label'] == 1]) # REAL == 3171
     print('count: %d; fake_count: %d; real_count: %d; summ: %d'
           %(count, fake_count, real_count, fake_count+real_count))
+    plt.bar(x=['Фейковые', 'Реальные'], height=[fake_count, real_count], color=['red', 'blue'])
+    plt.title('Соотношение количества реальных и ложных новостей')
+    plt.xlabel('Тип')
+    plt.ylabel('Количество')
+    plt.show()
 
 def get_df():
     df = pd.read_csv(file_name)
@@ -24,7 +29,7 @@ def get_df():
     return df
 
 def get_tfidf(df):
-    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_vectorizer = TfidfVectorizer(stop_words='english', max_df=0.7)
     # Применение TF-IDF к текстовым данным
     tfidf_matrix = tfidf_vectorizer.fit_transform(df['text'])
 
@@ -32,5 +37,5 @@ def get_tfidf(df):
     feature_names = tfidf_vectorizer.get_feature_names_out()
     return tfidf_matrix, feature_names
 
-
+#вывод диаграммы подтверждающей равное соотношение фейковых и реальных новостей
 #validate_count(get_df())
