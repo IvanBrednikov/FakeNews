@@ -1,9 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.feature_extraction.text import TfidfVectorizer
 import DataPreprocess as Data
-import seaborn as sns
 
 df = Data.get_df()
 tfidf_matrix, feature_names = Data.get_tfidf(df)
@@ -18,9 +16,11 @@ for word_i in range(len(feature_names)):
     for ch in str(feature_names[word_i]):
         if ch in ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']:
             del_list.append(word_i)
+            feature_names[word_i] = -1
             break
 
 df_tfidf = df_tfidf.drop(columns=del_list)
+feature_names = feature_names[feature_names != -1]
 
 #выведем матрицу как изображение с оттенками серого
 tfidf_matrix = df_tfidf.values #преборазование в матрицу
@@ -72,11 +72,12 @@ plt.xlabel('Документ')
 plt.ylabel('Слово')
 
 plt.subplot(1, 2, 2)
-plt.bar(range(fake_means.shape[0]), fake_means, color='r')
-plt.bar(range(fake_means.shape[0]), real_means, color='b')
+plt.bar(feature_names[0:fake_means.shape[0]], fake_means, color='r')
+plt.bar(feature_names[0:fake_means.shape[0]], real_means, color='b')
 plt.title('Соотношение значимости слов в фейковых новостях и в реальных')
 plt.xlabel('Слова')
-plt.ylabel('Соотношение средней значимости')
+plt.ylabel('Средний вес')
+plt.xticks(rotation=90)
 
 plt.show()
 

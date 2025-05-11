@@ -1,7 +1,4 @@
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.feature_extraction.text import TfidfVectorizer
 import DataPreprocess as Data
 
 #проверяем гипотезу: слова из заголовков часто совпадают со значимыми словами из текста статьи в правдивых новостях
