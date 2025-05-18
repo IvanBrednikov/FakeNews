@@ -30,7 +30,7 @@
 
 <img src="ParkinsonDisease/data_raspred.png" width=300 height=300><br>
 Полученная модель имеет точность - 94.87% <br>
-<img src="ParkinsonDisease/сonf_matrix.png" width=300 height=300><br>
+<img src="ParkinsonDisease/conf_matrix.png" width=300 height=300><br>
 
 </p>
 
