@@ -17,7 +17,7 @@
 Данные в наборе распределены равномерно<br>
 <img src="FakeNews/Bar3.png" width=300 height=300><br>
 Полученная модель имеет точность - 93.05% <br>
-<img src="FakeNews/conf_matrix.png" width=300 height=300><br>
+<img src="FakeNews/Conf_matrix.png" width=300 height=300><br>
 </p>
 
 <h2>Задача 2</h2>
@@ -30,7 +30,7 @@
 
 <img src="ParkinsonDisease/data_raspred.png" width=300 height=300><br>
 Полученная модель имеет точность - 94.87% <br>
-<img src="ParkinsonDisease/conf_matrix.png" width=300 height=300><br>
+<img src="ParkinsonDisease/сonf_matrix.png" width=300 height=300><br>
 
 </p>
 
