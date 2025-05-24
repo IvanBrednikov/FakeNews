@@ -11,16 +11,16 @@ df = pd.read_csv('parkinsons.data')
 features=df.loc[:,df.columns!='status'].values[:,1:]
 labels=df.loc[:,'status'].values
 
+#разбиение датасета на обучающие и тестовые наборы данных
+x_train,x_test,y_train,y_test=train_test_split(features, labels, test_size=0.2, random_state=7)
+
 #масштабируем данные от -1 до 1
 scaler=MinMaxScaler((-1,1))
-x=scaler.fit_transform(features)
-y=labels
-
-#разбиение датасета на обучающие и тестовые наборы данных
-x_train,x_test,y_train,y_test=train_test_split(x, y, test_size=0.2, random_state=7)
+x_train =scaler.fit_transform(x_train)
+x_test = scaler.transform(x_test)
 
 #создание и обучение модели
-model=XGBClassifier()
+model=XGBClassifier(random_state=15)
 model.fit(x_train,y_train)
 
 #вывод результата
